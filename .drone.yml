@@ -7,12 +7,13 @@ pipeline:
   notify:
     image: drillster/drone-email
     secrets:
-      - source: notify_host
+      - source: email_host
         target: plugin_host
-      - source: notify_username
+      - source: email_username
         target: plugin_username
-      - source: notify_password
+      - source: email_password
         target: plugin_password
     from: ci@mesalock-linux.org
+    recipients: [ devel@mesalock-linux.org ]
     when:
       status: [ success, changed, failure ]
