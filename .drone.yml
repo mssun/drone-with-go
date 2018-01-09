@@ -4,3 +4,12 @@ pipeline:
     commands:
       - go build
       - go test
+  notify:
+    image: drillster/drone-email
+    secrets:
+      - host: email_host
+      - username: email_username
+      - password: email_password
+    from: ci@mesalock-linux.org
+    when:
+      status: [ success, changed, failure ]
