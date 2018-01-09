@@ -6,10 +6,7 @@ pipeline:
       - go test
   notify:
     image: drillster/drone-email
-    secrets:
-      - host: email_host
-      - username: email_username
-      - password: email_password
+    secrets: [ notify_host, notify_username, notify_password ]
     from: ci@mesalock-linux.org
     when:
       status: [ success, changed, failure ]
