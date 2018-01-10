@@ -10,6 +10,6 @@ pipeline:
       - go test
   notify:
     image: drillster/drone-email
-    secrets: [plugin_host, plugin_username, plugin_password, plugin_from ]
+    secrets: [ plugin_host, plugin_username, plugin_password, plugin_from ]
     when:
       status: [ success, changed, failure ]
