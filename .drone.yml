@@ -4,7 +4,7 @@ pipeline:
     commands:
       - git clone -b develop https://github.com/mesalock-linux/mesalock-distro.git ../mesalock-distro
   backend:
-    image: golang
+    image: golang:${GO_VERSION}
     commands:
       - go build
       - go test
@@ -12,4 +12,10 @@ pipeline:
     image: drillster/drone-email
     secrets: [ plugin_host, plugin_username, plugin_password, plugin_from ]
     when:
-      status: [ success, changed, failure ]
+      status: [ changed, failure ]
+
+matrix:
+  GO_VERSION:
+    - latest
+    - "1.7"
+    - "1.6"
