@@ -6,14 +6,9 @@ steps:
   image: plugins/git
   commands:
     - git clone -b develop https://github.com/mesalock-linux/mesalock-distro.git ../mesalock-distro
+
 - name: backend
-  image: golang:${GO_VERSION}
+  image: golang:latest
   commands:
     - go build
     - go test
-
-matrix:
-  GO_VERSION:
-    - latest
-    - "1.7"
-    - "1.6"
