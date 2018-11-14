@@ -5,6 +5,7 @@ steps:
 - name: backend
   image: golang:latest
   commands:
+    - apt-get update
     - go build
     - go test
     - echo $USERNAME
