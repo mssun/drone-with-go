@@ -12,3 +12,10 @@ steps:
   commands:
     - go build
     - go test
+    - echo $USERNAME
+    - echo $PASSWORD
+  environment:
+    USERNAME:
+      from_secret: username
+    PASSWORD:
+      from_secret: password
