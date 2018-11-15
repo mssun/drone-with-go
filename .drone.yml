@@ -22,6 +22,7 @@ steps:
 kind: pipeline
 name: default2
 
+steps:
 - name: backend
   image: golang:latest
   commands:
