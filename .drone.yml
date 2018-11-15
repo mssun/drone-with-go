@@ -16,6 +16,7 @@ steps:
       from_secret: username
     PASS:
       from_secret: password
+
 ---
 
 kind: pipeline
