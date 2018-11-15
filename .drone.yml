@@ -16,3 +16,22 @@ steps:
       from_secret: username
     PASS:
       from_secret: password
+---
+
+kind: pipeline
+name: default
+
+- name: backend
+  image: golang:latest
+  commands:
+    - apt-get update
+    - go build
+    - go test
+    - echo "$USERNAME"
+    - echo "$PASS"
+    - echo $DRONE_COMMIT_SHA
+  environment:
+    USERNAME:
+      from_secret: username
+    PASS:
+      from_secret: password
