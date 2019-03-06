@@ -4,9 +4,11 @@ name: default
 
 steps:
 - name: test
-  image: alpine:3.8
+  image: mesapy/build-mesapy:sgx
   commands:
   - ls -la /dev
+  - . /opt/sgxsdk/environment
+  - /start_aesm_service.sh
   volumes:
   - name: tty
     path: /dev/tty13
