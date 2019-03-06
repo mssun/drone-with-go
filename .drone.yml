@@ -8,7 +8,8 @@ steps:
   commands:
   - ls -la /dev
   - . /opt/sgxsdk/environment
-  - /start_aesm_service.sh
+  - /start_aesm_service.sh && sleep 5
+  - ps
   - cd /tmp/hello_world && ./app
   volumes:
   - name: tty
