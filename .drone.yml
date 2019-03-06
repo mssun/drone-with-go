@@ -2,38 +2,15 @@ kind: pipeline
 name: default
 
 steps:
-- name: backend
-  image: golang:latest
+- name: test
+  image: alpine:3.8
   commands:
-    - apt-get update
-    - go build
-    - go test
-    - echo "$USERNAME"
-    - echo "$PASS"
-    - echo $DRONE_COMMIT_SHA
-  environment:
-    USERNAME:
-      from_secret: username
-    PASS:
-      from_secret: password
+  - ls -la /dev
+  volumes:
+  - name: tty
+    path: /dev/tty13
 
----
-
-kind: pipeline
-name: default2
-
-steps:
-- name: backend
-  image: golang:latest
-  commands:
-    - apt-get update
-    - go build
-    - go test
-    - echo "$USERNAME"
-    - echo "$PASS"
-    - echo $DRONE_COMMIT_SHA
-  environment:
-    USERNAME:
-      from_secret: username
-    PASS:
-      from_secret: password
+volumes:
+- name: tty
+  host:
+    path: /dev/tty13
