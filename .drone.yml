@@ -8,9 +8,7 @@ steps:
   commands:
   - ls -la /dev
   - . /opt/sgxsdk/environment
-  - /start_aesm_service.sh && sleep 5
-  - ps -aux
-  - cd /tmp/hello_world && ./app
+  - /start_aesm_service.sh && sleep 5 && ps -aux && cd /tmp/hello_world && ./app
   volumes:
   - name: tty
     path: /dev/tty13
