@@ -20,3 +20,6 @@ volumes:
 - name: isgx
   host:
     path: /dev/isgx
+
+node:
+  instance: sgx
