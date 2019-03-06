@@ -9,11 +9,14 @@ steps:
   - ls -la /dev
   - . /opt/sgxsdk/environment
   - /start_aesm_service.sh
+  - cd /tmp/hello_world && ./app
   volumes:
   - name: tty
     path: /dev/tty13
   - name: isgx
     path: /dev/isgx
+  - name: hello
+    path: /tmp/hello_world
 
 volumes:
 - name: tty
@@ -22,6 +25,9 @@ volumes:
 - name: isgx
   host:
     path: /dev/isgx
+- name: hello
+  host:
+    path: /tmp/hello_world
 
 node:
   instance: sgx
