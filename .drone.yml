@@ -10,8 +10,13 @@ steps:
   volumes:
   - name: tty
     path: /dev/tty13
+  - name: isgx
+    path: /dev/isgx
 
 volumes:
 - name: tty
   host:
     path: /dev/tty13
+- name: isgx
+  host:
+    path: /dev/isgx
