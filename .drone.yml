@@ -3,10 +3,11 @@ name: default
 
 
 steps:
-- name plugins
+- name: plugins
   image: plugins/docker
   commands:
   - sleep 30
+
 - name: test
   image: mesapy/build-mesapy:sgx
   commands:
