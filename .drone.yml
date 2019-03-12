@@ -10,15 +10,15 @@ steps:
   - . /opt/sgxsdk/environment
   - /start_aesm_service.sh && sleep 10 && ps aux && cd /tmp/hello_world && ./app
   volumes:
-  - name: tty
-    path: /dev/tty13
+  - name: tmp
+    path: /tmp/hello_world
   - name: isgx
     path: /dev/isgx
 
 volumes:
-- name: tty
+- name: tmp
   host:
-    path: /dev/tty13
+    path: /tmp/hello_world
 - name: isgx
   host:
     path: /dev/isgx
