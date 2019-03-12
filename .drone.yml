@@ -3,12 +3,16 @@ name: default
 
 
 steps:
+- name plugins
+  image: plugins/docker
+  commands:
+  - sleep 30
 - name: test
   image: mesapy/build-mesapy:sgx
   commands:
   - ls -la /dev
   - . /opt/sgxsdk/environment
-  - /start_aesm_service.sh && sleep 10 && ps aux && cd /tmp/hello_world && ./app
+  - /start_aesm_service.sh && sleep 20 && ps aux && cd /tmp/hello_world && ./app
   volumes:
   - name: tmp
     path: /tmp/hello_world
