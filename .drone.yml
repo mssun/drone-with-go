@@ -11,3 +11,20 @@ steps:
 
 node:
   instance: sgx
+
+---
+
+kind: pipeline
+name: default2
+
+commands: &commands
+  - pwd
+
+steps:
+- name: test
+  image: mesapy/build-mesapy:sgx
+  commands: *commands
+
+node:
+  instance: sgx
+
