@@ -1,32 +1,13 @@
 kind: pipeline
 name: default
 
+commands: &commands
+  - pwd
 
 steps:
-- name: plugins
-  image: plugins/docker
-  commands:
-  - sleep 30
-
 - name: test
   image: mesapy/build-mesapy:sgx
-  commands:
-  - ls -la /dev
-  - . /opt/sgxsdk/environment
-  - /start_aesm_service.sh && sleep 20 && ps aux && cd /tmp/hello_world && ./app
-  volumes:
-  - name: tmp
-    path: /tmp/hello_world
-  - name: isgx
-    path: /dev/isgx
-
-volumes:
-- name: tmp
-  host:
-    path: /tmp/hello_world
-- name: isgx
-  host:
-    path: /dev/isgx
+  commands: *commands
 
 node:
   instance: sgx
