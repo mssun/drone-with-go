@@ -2,12 +2,26 @@ kind: pipeline
 name: default
 
 commands: &commands
-  - pwd
+  - false
 
 steps:
 - name: test
   image: mesapy/build-mesapy:sgx
   commands: *commands
+- name: notify
+  image: drillster/drone-email
+  username:
+    from_secret: EMAIL_USERNAME
+  password:
+    from_secret: EMAIL_PASSWORD
+  host:
+    from_secret: EMAIL_HOST
+  from:
+    from_secret: EMAIL_FROM
+  when:
+    status:
+      - failure
+      - changed
 
 node:
   instance: sgx
