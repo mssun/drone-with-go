@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 commands: &commands
-  - false
+  - true
 
 steps:
 - name: test
